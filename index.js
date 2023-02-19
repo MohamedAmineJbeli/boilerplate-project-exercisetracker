@@ -57,7 +57,6 @@ app.post("/api/users", async (req,res) =>{
   res.json(user);
 });
 
-// add from, to and limit parameters to a GET /api/users/:_id/logs request to retrieve part of the ?log of any user. from and to are dates in yyyy-mm-dd format. limit is an integer of how many logs to send back.
 app.get("/api/users/:_id/logs", async (req,res) =>{
   let { from, to, limit} = req.query;
   const userId = req.params._id;
@@ -113,12 +112,6 @@ app.post("/api/users/:_id/exercises", async (req, res) => {
   } else{
     date = new Date(date);
   }
-
-  // username: String,
-  // description : String,
-  // duration: Number,
-  // date: String,
-  // userId: String,
 
   await Exercise.create({
     username: foundUser.username,
